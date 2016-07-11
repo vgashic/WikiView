@@ -1,0 +1,47 @@
+<!doctype html>
+<html class="no-js" lang="en">
+
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="x-ua-compatible" content="ie=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Foundation for Sites</title>
+	<link rel="stylesheet" href="css/app.css">
+	<link rel="stylesheet" href="css/font-awesome.min.css">
+</head>
+
+<body>
+	<div class="row" id="results-header">
+		<div class="column small-12 align-self-middle text-center">
+			<p><i class="fa fa-wikipedia-w"></i> Showing results for </p>
+		</div>
+	</div>
+
+	<div class="row" id="main-screen">
+		<div class="column large-6 large-offset-3 small-10 small-offset-1 align-self-middle">
+			<form id="search-form">
+				<div class="row align-center">
+					<div class="input-group">
+						<span class="input-group-label"><i class="fa fa-wikipedia-w"></i></span>
+						<input class="input-group-field" type="text" placeholder="search">
+					</div>
+				</div>
+				<div class="row align-center search-buttons">
+					<input class="button" type="submit" value="Search">
+					<input class="button" type="submit" value="Random">
+				</div>
+			</form>
+		</div>
+	</div>
+
+	<div class="row" id="search-results">
+
+	</div>
+
+	<script src="bower_components/jquery/dist/jquery.js"></script>
+	<script src="bower_components/what-input/what-input.js"></script>
+	<script src="bower_components/foundation-sites/dist/foundation.js"></script>
+	<script src="js/app.js"></script>
+</body>
+
+</html>
