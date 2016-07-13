@@ -17,7 +17,7 @@ function getResults(textToSearch) {
 			type: "POST",
 			dataType: "jsonp",
 			success: function (response) {
-				console.log(response);
+				//console.log(response);
 
 				var results = response.query.pages;
 
@@ -28,10 +28,16 @@ function getResults(textToSearch) {
 					var extract = results[prop].extract;
 					var pageUrl = results[prop].fullurl;
 					var dateModified = moment(results[prop].touched).format("DD.MM.YYYY");
+					var thumbnailUrl = ""
+					var thumbnailWidth = 0
 
-					var htmlElement = "<div class='search-item'> \n \
-	<div class='row search-item-title align-self-bottom'><a class='align-self-bottom' href='" + pageUrl + "' target='_blank'>" + title + "</a><span class='modified-date align-self-bottom'> last modified: " + dateModified + "</span></div> \n \
-	<div class='row search-item-preview'>" + extract + "</div> \n \
+					if (results[prop].hasOwnProperty("thumbnail")) {
+						thumbnailUrl = results[prop].thumbnail.source;
+					}
+
+					var htmlElement = "<div class='search-item' style='background-image: url(" + thumbnailUrl + ");'> \n \
+	<div class='search-item-title align-self-bottom'><a class='align-self-bottom' href='" + pageUrl + "' target='_blank'>" + title + "</a><span class='modified-date align-self-bottom'> last modified: " + dateModified + "</span></div> \n \
+	<div class='search-item-preview'>" + extract + "</div> \n \
 </div>";
 					if (extract != null) {
 						$("#search-results").prepend(htmlElement);

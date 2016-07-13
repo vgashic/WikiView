@@ -35,12 +35,16 @@ body {
 }
 
 .search-item {
-	padding: 8px 20px;
+	padding: 8px 80px;
+	//	padding-left: 110px;
+	background-position: 10px 10px;
+	background-repeat: no-repeat;
 }
 
 .search-item-title a {
 	font-weight: 600;
 	color: midnightblue;
+	margin-right: 10px;
 }
 
 .search-item-preview {
@@ -50,7 +54,7 @@ body {
 .modified-date {
 	font-size: 0.7em;
 	color: gray;
-	padding-left: 10px;
 	vertical-align: bottom;
 	line-height: 22px;
+	white-space: nowrap;
 }
