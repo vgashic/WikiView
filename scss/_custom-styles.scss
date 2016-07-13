@@ -1,34 +1,48 @@
 body {
-    background: url(../img/crossword.png)
+	background: url(../img/crossword.png)
 }
 
 #results-header {
-    top: 0;
-    min-height: 80px;
+	top: 0;
+	min-height: 80px;
+	margin-bottom: 30px;
 }
 
 #main-screen {
-    min-height: 100vh;
+	min-height: 100vh;
 }
 
 .search-buttons {
-    .button {
-        margin: 0 5px;
-        width: 90px;
-    }
+	.button {
+		margin: 0 5px;
+		width: 90px;
+	}
 }
 
 #search-results {
-    min-height: 80vh;
+	min-height: 80vh;
 }
 
 #wiki-logo {
-    width: 150px;
-    height: 150px;
-    margin-bottom: 10px;
-    opacity: .8;
+	width: 150px;
+	height: 150px;
+	margin-bottom: 10px;
+	opacity: .8;
 }
 
 #search-form-wrapper {
-    margin-top: -160px;
+	margin-top: -160px;
+}
+
+.search-item {
+	padding: 8px 10px;
+}
+
+.search-item-title a {
+	font-weight: 600;
+	color: #0A345A;
+}
+
+.search-item-preview {
+	color: black;
 }

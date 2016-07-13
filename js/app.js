@@ -1,19 +1,19 @@
+/*global $, jQuery, alert, console */
+
 $(document).foundation();
-//$("#search-results").hide();
+$("#search-results").hide();
 $("#results-header").hide();
 
 $("#small-random-button").hide();
 
-function showResults(item, index) {
-	$("#search-results").append(item);
-}
 
 function getResults(textToSearch) {
-	var url = "https://en.wikipedia.org/w/api.php?format=json&action=query&generator=search&gsrnamespace=0&gsrlimit=10&prop=pageimages|extracts&pilimit=max&exintro&explaintext&exsentences=1&exlimit=max&gsrsearch=" + textToSearch;
+	"use strict";
+	var apiUrl = "https://en.wikipedia.org/w/api.php?format=json&action=query&generator=search&gsrnamespace=0&gsrlimit=20&prop=pageimages|extracts|info&inprop=url&pilimit=max&exintro&explaintext&exsentences=1&exlimit=50&gsrsearch=" + textToSearch;
 
 
 	$.ajax({
-			url: url,
+			url: apiUrl,
 			type: "POST",
 			dataType: "jsonp",
 			success: function (response) {
@@ -26,12 +26,17 @@ function getResults(textToSearch) {
 
 					var title = results[prop].title;
 					var extract = results[prop].extract;
+					var pageUrl = results[prop].canonicalurl;
 
 					var htmlElement = "<div class='search-item'> \n \
-	<div class='row search-item-title'>" + title + "</div> \n \
-	<div class='row search-item-title'>" + extract + "</div> \n \
+	<div class='row search-item-title'><a href='" + pageUrl + "' target='_blank'>" + title + "</a></div> \n \
+	<div class='row search-item-preview'>" + extract + "</div> \n \
 </div>";
-					$("#search-results").append(htmlElement);
+					if (extract != null) {
+						$("#search-results").prepend(htmlElement);
+					} else {
+						$("#search-results").append(htmlElement);
+					}
 				}
 				$("#search-results").show();
 			}
@@ -48,13 +53,16 @@ $("#main-screen #search-form").submit(function () {
 	$("#results-header").show();
 
 	$("#search-results").empty();
-	$("#search-results").show();
 
 	$("#search-form-wrapper").detach().appendTo("#results-header");
 	$(".search-buttons").remove();
+
 	$("#small-random-button").show();
 
-	getResults($("#search-text").val());
+
+	if ($("#search-text").val() != "") {
+		getResults($("#search-text").val());
+	};
 
 	return false;
 });
