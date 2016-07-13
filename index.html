@@ -1,0 +1,56 @@
+<!doctype html>
+<html class="no-js" lang="en">
+
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="x-ua-compatible" content="ie=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>WikiView</title>
+	<link rel="stylesheet" href="css/app.css">
+	<link rel="stylesheet" href="bower_components/font-awesome/css/font-awesome.min.css">
+</head>
+
+<body>
+	<div class="row align-center" id="results-header">
+	</div>
+
+	<div class="row align-center" id="main-screen">
+		<div class="column large-6 slarge-offset-3 small-10 ssmall-offset-1 align-self-middle" id="search-form-wrapper">
+			<div class="row align-center">
+				<img src="img/wikipedia.png" alt="" id="wiki-logo">
+			</div>
+			<form id="search-form">
+				<div class="row align-center">
+					<div class="input-group">
+						<span class="input-group-label"><i class="fa fa-wikipedia-w"></i></span>
+						<input class="input-group-field" id="search-text" type="text" placeholder="search">
+						<div class="input-group-button">
+							<button type="submit" class="button secondary"><i class="fa fa-search"></i></button>
+						</div>
+						<div class="input-group-button" id="small-random-button">
+							<a class="button secondary" title="Get random article" href="https://en.wikipedia.org/wiki/Special:Random" target="_blank"><i class="fa fa-question"></i></a>
+						</div>
+					</div>
+					<div class="row align-center search-buttons">
+						<button class="button secondary" type="submit">Search</button>
+						<a class="button secondary" href="https://en.wikipedia.org/wiki/Special:Random" target="_blank">Random</a>
+					</div>
+				</div>
+			</form>
+		</div>
+	</div>
+
+	<div class="row">
+		<div id="search-results">
+
+		</div>
+	</div>
+
+	<script src="bower_components/jquery/dist/jquery.js"></script>
+	<script src="bower_components/moment/min/moment-with-locales.min.js"></script>
+	<script src="bower_components/what-input/what-input.js"></script>
+	<script src="bower_components/foundation-sites/dist/foundation.js"></script>
+	<script src="js/app.js"></script>
+</body>
+
+</html>
