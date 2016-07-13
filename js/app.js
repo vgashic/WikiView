@@ -9,7 +9,7 @@ $("#small-random-button").hide();
 
 function getResults(textToSearch) {
 	"use strict";
-	var apiUrl = "https://en.wikipedia.org/w/api.php?format=json&action=query&generator=search&gsrnamespace=0&gsrlimit=20&prop=pageimages|extracts|info&inprop=url&pilimit=max&exintro&explaintext&exsentences=1&exlimit=50&gsrsearch=" + textToSearch;
+	var apiUrl = "https://en.wikipedia.org/w/api.php?format=json&action=query&generator=search&gsrnamespace=0&gsrlimit=20&prop=pageimages|extracts|info&inprop=url&pilimit=max&exintro&explaintext&exsentences=1&exlimit=20&gsrsearch=" + textToSearch;
 
 
 	$.ajax({
@@ -26,10 +26,11 @@ function getResults(textToSearch) {
 
 					var title = results[prop].title;
 					var extract = results[prop].extract;
-					var pageUrl = results[prop].canonicalurl;
+					var pageUrl = results[prop].fullurl;
+					var dateModified = moment(results[prop].touched).format("DD.MM.YYYY");
 
 					var htmlElement = "<div class='search-item'> \n \
-	<div class='row search-item-title'><a href='" + pageUrl + "' target='_blank'>" + title + "</a></div> \n \
+	<div class='row search-item-title align-self-bottom'><a class='align-self-bottom' href='" + pageUrl + "' target='_blank'>" + title + "</a><span class='modified-date align-self-bottom'> last modified: " + dateModified + "</span></div> \n \
 	<div class='row search-item-preview'>" + extract + "</div> \n \
 </div>";
 					if (extract != null) {
